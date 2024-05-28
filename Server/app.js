@@ -11,6 +11,5 @@ const app = express()
 //     res.sendFile(path.join(__dirname, 'Client', 'build', 'index.html'))
 // })
 
-console.log(api)
 
 app.listen(PORT, () => console.log(`server is working on ${PORT}`))
