@@ -1,26 +1,20 @@
-const mongoose = require('mongoose');
+const User = require("./user"); 
 
 
-
-
-
-async function main(){
-
-     mongoose.connect('mongodb://127.0.0.1:27017/test');
-
-const data = await user.create({name:"kannan", age:53})
-
+async function main() {
+    
+    try {
+        // Create a new user
+        const data = await User.create({ name: "nandy", age: 23, email: "babycorn43@dmail.eth", address:{street:"LA", city:"NYC"}});
+        // User.name = "nandy"
+        console.log(data);
+    } 
+    catch (error) {
+        console.error("Error creating user:", error);
+    }
 }
 
-// console.log(data)
-
-       //OLD WAY 
-
-// const data = new user({
-//     name:"kannan",
-//     age:53
-// })
-
-// data.save().then(()=>{ console.log("data saved")})
+// Call the main function to execute the code
+main();
 
 
