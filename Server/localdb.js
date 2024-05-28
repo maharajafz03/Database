@@ -1,17 +1,26 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/test');
-
-const userschema = new mongoose.Schema({
-    name:String,
-    age: Number,
-    token:String
-})
 
 
-// const Cat = mongoose.model('Cat', { name: String });
 
 
-// const kitty = new Cat({ name: 'Zildjian' });
+async function main(){
 
-// kitty.save().then(() => console.log('meow'));
+     mongoose.connect('mongodb://127.0.0.1:27017/test');
+
+const data = await user.create({name:"kannan", age:53})
+
+}
+
+// console.log(data)
+
+       //OLD WAY 
+
+// const data = new user({
+//     name:"kannan",
+//     age:53
+// })
+
+// data.save().then(()=>{ console.log("data saved")})
+
+
