@@ -1,5 +1,5 @@
 const User = require("./user"); 
-
+const connectDB = require("./DBconfig")
 
 async function main() {
     
@@ -22,7 +22,7 @@ async function main() {
 }
 
 // Call the main function to execute the code
-// main();
+ main();
 
 async function cool () {
     const control = await User.findById({id: "6655b2c9e20ba485a8b52d1d"})
@@ -30,4 +30,3 @@ async function cool () {
 }
 
 
-cool()
