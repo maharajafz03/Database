@@ -1,58 +1,102 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const market = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+const Register = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    age: '',
+    email: '',
+    password: '',
+    street: '',
+    city: '',
+  });
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  console.log(setFormData)
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can add your authentication logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
+    const user = {
+      name: formData.name,
+      age: formData.age,
+      email: formData.email,
+      password: formData.password,
+      address: {
+        street: formData.street,
+        city: formData.city,
+      },
+    };
+
+    try {
+      const response = await axios.post('/api/register', user);
+      console.log('User registered:', response.data);
+    } catch (error) {
+      console.error('Error registering user:', error);
+    }
   };
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Register</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={handleEmailChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type={showPassword ? "text" : "password"}
-            value={password}
-            onChange={handlePasswordChange}
-            required
-          />
-          <button type="button" onClick={togglePasswordVisibility}>
-            {showPassword ? 'Hide' : 'Show'} Password
-          </button>
-        </div>
-        <button type="submit">Login</button>
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="number"
+          name="age"
+          placeholder="Age"
+          value={formData.age}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="street"
+          placeholder="Street"
+          value={formData.street}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="city"
+          placeholder="City"
+          value={formData.city}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Register</button>
       </form>
     </div>
   );
 };
 
-export default market;
+export default Register;

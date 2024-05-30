@@ -8,11 +8,10 @@ const addressSchema = new mongoose.Schema(
 )
 
 const userSchema = new mongoose.Schema({
-    name:String,
-    age: Number,
     email:String,
-    friend:mongoose.SchemaTypes.ObjectId,
-    address: addressSchema 
+    age: Number,
+    password:String,
+    
 })
 
 
