@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
   // Connect to the database
   //connectDB();
 // User registration route
-app.post("/api/register", async (req, res) => {
+app.post("/localhost:4000", async (req, res) => {
     const { name, age, email, password, address } = req.body;
 
     try {
