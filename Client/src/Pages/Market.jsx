@@ -32,9 +32,9 @@ const Register = () => {
         city: formData.city,
       },
     };
-
+        setFormData("")
     try {
-      const response = await axios.post('/localhost:4000', user);
+      const response = await axios.post('https://localhost:4000', user);
       console.log('User registered:', response.data);
     } catch (error) {
       console.error('Error registering user:', error);
@@ -93,7 +93,7 @@ const Register = () => {
           onChange={handleChange}
           required
         />
-        <button type="submit">Register</button>
+        <button onSubmit={handleSubmit} >Register</button>
       </form>
     </div>
   );

@@ -11,7 +11,7 @@ async function main() {
             name: "nandy", 
             age: 23, 
             email: "babycorn43@dmail.eth", 
-            address:{
+            password:{
                 street:"LA",
                 city:"NYC"}
             });
