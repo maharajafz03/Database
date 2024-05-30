@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
 const connectDB = async () => {
   try {
     await mongoose.connect('mongodb://127.0.0.1:27017/test', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+
+      serverSelectionTimeoutMS: 30000, // 30 seconds
+      socketTimeoutMS: 45000, // 45 seconds
     });
     console.log('MongoDB connected');
   } catch (err) {
@@ -15,8 +16,12 @@ const connectDB = async () => {
   }
 };
 
+connectDB()
+
 module.exports = connectDB;
 
+
+       // old config
 
 // const express = require('express');
 // const mongoose = require('mongoose'); 
