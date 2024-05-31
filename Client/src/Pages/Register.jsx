@@ -16,6 +16,7 @@ const Register = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setFormData("")  
   };
 
   console.log(setFormData)
@@ -32,7 +33,7 @@ const Register = () => {
         city: formData.city,
       },
     };
-        setFormData("")
+        
     try {
       const response = await axios.post('https://localhost:4000', user);
       console.log('User registered:', response.data);
@@ -67,7 +68,7 @@ const Register = () => {
           placeholder="Email"
           value={formData.email}
           onChange={handleChange}
-          required
+          
         />
         <input
           type="password"
@@ -93,7 +94,7 @@ const Register = () => {
           onChange={handleChange}
           required
         />
-        <button onSubmit={handleSubmit} >Register</button>
+        <button type='submit' >Register</button>
       </form>
     </div>
   );
