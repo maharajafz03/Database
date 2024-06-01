@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router'
 import Home from './Pages/Home'
 import About from './Pages/About'
-import Market from './Pages/Market'
+import Register from './Pages/Register'
 import Navbar from './Navbar'
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
      <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/About' element={<About />} />
-          <Route path='/Market' element={<Market />} />
+          <Route path='/Market' element={<Register />} />
         </Routes>
     
     </div>

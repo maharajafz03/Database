@@ -4,11 +4,8 @@ import axios from 'axios';
 const Register = () => {
   const [formData, setFormData] = useState({
     name: '',
-    age: '',
     email: '',
-    password: '',
-    street: '',
-    city: '',
+    password: ''
   });
 
   const handleChange = (e) => {
@@ -25,13 +22,13 @@ const Register = () => {
     e.preventDefault();
     const user = {
       name: formData.name,
-      age: formData.age,
+     // age: formData.age,
       email: formData.email,
       password: formData.password,
-      address: {
-        street: formData.street,
-        city: formData.city,
-      },
+      // address: {
+      //   street: formData.street,
+      //   city: formData.city,
+      // },
     };
         
     try {
@@ -54,14 +51,14 @@ const Register = () => {
           onChange={handleChange}
           required
         />
-        <input
+        {/* <input
           type="number"
           name="age"
           placeholder="Age"
           value={formData.age}
           onChange={handleChange}
           required
-        />
+        /> */}
         <input
           type="email"
           name="email"
@@ -78,22 +75,22 @@ const Register = () => {
           onChange={handleChange}
           required
         />
-        <input
+        {/* <input
           type="text"
           name="street"
           placeholder="Street"
           value={formData.street}
           onChange={handleChange}
           required
-        />
-        <input
+        /> */}
+        {/* <input
           type="text"
           name="city"
           placeholder="City"
           value={formData.city}
           onChange={handleChange}
           required
-        />
+        /> */}
         <button type='submit' >Register</button>
       </form>
     </div>
