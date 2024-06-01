@@ -35,7 +35,7 @@ const Register = () => {
     };
         
     try {
-      const response = await axios.post('https://localhost:4000', user);
+      const response = await axios.post('/register', user);
       console.log('User registered:', response.data);
     } catch (error) {
       console.error('Error registering user:', error);

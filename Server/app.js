@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const bcrypt = require('bcryptjs')
-//const connectDB = require("./DBconfig")
+const connectDB = require("./DBconfig")
 
 
 const PORT = 4000
