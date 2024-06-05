@@ -1,50 +1,22 @@
 const express = require('express')
-const path = require('path')
-const bcrypt = require('bcryptjs')
-const cors = require('cors'); // Import cors
+//const path = require('path')
+//const bcrypt = require('bcryptjs')
+//const cors = require('cors'); // Import cors
 const connectDB = require("./DBconfig")
 
-
 const PORT = 4000
-
 const app = express()
 
-app.use(cors());
+//app.use(cors());
 
 // Middleware to parse JSON and URL-encoded data
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+//app.use(express.json());
+//app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-    res.send('Server is fucking!');
+app.get('/user', async (req, res) => {
+    const userData = await userModel.find()
+    res.json(userData)
   });
   
-  // Connect to the database
-  //connectDB();
-// User registration route
-app.post("/register", async (req, res) => {
-    const { name, email, password, } = req.body;
-
-    try {
-        // Hash the password
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
-
-        const newUser = new User({
-            name,
-            age,
-            email,
-            password: hashedPassword,
-            address,
-        });
-
-        const savedUser = await newUser.create();
-        res.status(201).json(savedUser);
-        console.log(savedUser)
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-});
-
 
 app.listen(PORT, () => console.log(`server is fuking on ${PORT}`))
