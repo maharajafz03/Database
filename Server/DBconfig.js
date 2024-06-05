@@ -1,10 +1,10 @@
 
 // config.js
-const mongoose = require('mongoose');
+const mongoose = require('mongoose');  //mongodb://localhost:27017/data
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/data', {
+    await mongoose.connect('mongodb://localDB/web3DB', {
 
       serverSelectionTimeoutMS: 30000, // 30 seconds
       socketTimeoutMS: 45000, // 45 seconds

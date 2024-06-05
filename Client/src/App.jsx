@@ -1,26 +1,100 @@
-import React from 'react'
-import { Route, Routes } from 'react-router'
-import Home from './Pages/Home'
-import About from './Pages/About'
-import Register from './Pages/Register'
-import Navbar from './Navbar'
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const App = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+    setFormData("")  
+  };
+
+  console.log(setFormData)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const user = {
+      name: formData.name,
+     // age: formData.age,
+      email: formData.email,
+      password: formData.password,
+      // address: {
+      //   street: formData.street,
+      //   city: formData.city,
+      // },
+    };
+        
+    try {
+      const response = await axios.post('/register', user);
+      console.log('User registered:', response.data);
+    } catch (error) {
+      console.error('Error registering user:', error);
+    }
+  };
+
   return (
     <div>
-      
-        <div>
-        <Navbar />
-        </div>
-      
-     <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/About' element={<About />} />
-          <Route path='/Market' element={<Register />} />
-        </Routes>
-    
+      <h2>Register</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        {/* <input
+          type="number"
+          name="age"
+          placeholder="Age"
+          value={formData.age}
+          onChange={handleChange}
+          required
+        /> */}
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        {/* <input
+          type="text"
+          name="street"
+          placeholder="Street"
+          value={formData.street}
+          onChange={handleChange}
+          required
+        /> */}
+        {/* <input
+          type="text"
+          name="city"
+          placeholder="City"
+          value={formData.city}
+          onChange={handleChange}
+          required
+        /> */}
+        <button type='submit' >Register</button>
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

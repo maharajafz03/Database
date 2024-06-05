@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 
-const addressSchema = new mongoose.Schema(
-    {
-        street:String,
-        city:String
-    }
-)
+// const addressSchema = new mongoose.Schema(
+//     {
+//         street:String,
+//         city:String
+//     }
+// )
 
 const userSchema = new mongoose.Schema({
-    email:String,
+    name:String,
     age: Number,
-    password:String,
+    // password:String,
     
 })
 
