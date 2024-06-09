@@ -6,12 +6,22 @@ const userSchema = new mongoose.Schema({
     name:String,
     email:String,
     Number:Number,
-    adress: {
-        state: String,
-        city: String,
-    }
+    adress: useraddSchema
 });
 
-const userModel = mongoose.model("user", userSchema);
+const useraddSchema = new mongoose.Schema({
+    state: String,
+    city: String,
+    pincode: Number,
+})
 
-module.exports = userModel();
+const userModel = mongoose.model("user", userSchema);
+const useraddModel = mongoose.model("useraddress", useraddSchema)
+
+// module.exports = userModel();
+// module.exports = useraddModel();
+
+module.exports = {
+    userModel: mongoose.model("user", userSchema),
+    useraddModel: mongoose.model("useraddress", useraddSchema)
+};
